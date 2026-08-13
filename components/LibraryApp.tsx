@@ -194,16 +194,16 @@ export function LibraryApp() {
             {query && <button className="clear-search" onClick={() => setQuery("")} aria-label="Clear search"><X size={16} /></button>}
           </div>
 
-          <select className="control select-control" value={sort} onChange={(e) => setSort(e.target.value as SortField)} aria-label="Sort field">
+          <select className="control select-control toolbar-sort" value={sort} onChange={(e) => setSort(e.target.value as SortField)} aria-label="Sort field">
             <option value="name">Name</option>
             <option value="rating">Rating</option>
             <option value="release_year">Release year</option>
           </select>
-          <button className="icon-control" onClick={() => setDirection(direction === "asc" ? "desc" : "asc")} title={direction === "asc" ? "Ascending" : "Descending"}>
+          <button className="icon-control toolbar-direction" onClick={() => setDirection(direction === "asc" ? "desc" : "asc")} title={direction === "asc" ? "Ascending" : "Descending"}>
             {direction === "asc" ? <ArrowUp size={17} /> : <ArrowDown size={17} />}
           </button>
 
-          <div className="filter-wrap" ref={filterRef}>
+          <div className="filter-wrap toolbar-filter" ref={filterRef}>
             <button className={`icon-control ${statuses.length ? "active" : ""}`} onClick={() => setFilterOpen((v) => !v)} title="Filter completion status">
               <Filter size={17} />
             </button>
@@ -221,7 +221,7 @@ export function LibraryApp() {
           </div>
 
           <button
-            className={`control edit-button ${editMode ? "active" : ""}`}
+            className={`control edit-button toolbar-edit ${editMode ? "active" : ""}`}
             disabled={!editUnlocked}
             title={editUnlocked ? "Toggle Edit Mode" : "Unlock Edit Access in Settings first"}
             onClick={() => setEditMode((v) => !v)}
@@ -229,7 +229,7 @@ export function LibraryApp() {
             <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><Pencil size={15} /> Edit</span>
           </button>
 
-          <button className="icon-control" onClick={() => setSettingsOpen(true)} title="Settings"><Settings size={18} /></button>
+          <button className="icon-control toolbar-settings" onClick={() => setSettingsOpen(true)} title="Settings"><Settings size={18} /></button>
         </div>
       </header>
 
