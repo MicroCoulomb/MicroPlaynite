@@ -1,0 +1,28 @@
+{
+  "name": "micro-playnite",
+  "version": "1.0.1",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/sync-logo.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/sync-logo.mjs",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.1.0",
+    "lucide-react": "1.28.0",
+    "next": "16.3.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "22.15.3",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.8.3"
+  }
+}
