@@ -48,7 +48,7 @@ button { color: inherit; }
 .search-wrap input { width:100%; height:100%; padding:0 38px 0 34px; outline:none; }
 .clear-search { position:absolute; right:0; top:0; width:38px; height:100%; border:0; background:transparent; color:var(--muted); cursor:pointer; display:grid; place-items:center; }
 .select-control { padding: 0 30px 0 10px; cursor:pointer; outline:none; }
-.edit-button { padding:0 13px; cursor:pointer; }
+.edit-button { width:40px; padding:0; cursor:pointer; display:grid; place-items:center; }
 
 .library-shell { padding: 20px 28px 100px; }
 .game-grid { display:grid; gap:14px; grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -113,10 +113,43 @@ button { color: inherit; }
 @media (min-width: 1024px) { .game-grid { grid-template-columns:repeat(6,minmax(0,1fr)); } }
 @media (min-width: 1280px) { .game-grid { grid-template-columns:repeat(var(--desktop-cols,8),minmax(0,1fr)); } }
 @media (max-width: 800px) {
-  .topbar { align-items:flex-start; padding:9px 14px; }
-  .logo-button img { height:36px; max-width:90px; }
-  .toolbar { gap:6px; }
-  .search-wrap { width:100%; order:10; }
+  .topbar { align-items:flex-start; gap:8px; padding:9px 10px; }
+  .logo-button { height:var(--control-height); align-items:center; }
+  .logo-button img { height:34px; max-width:78px; }
+
+  /* Mobile toolbar: row 1 = search + settings, row 2 = sort + direction + filter + edit. */
+  .toolbar {
+    margin-left:0;
+    flex:1 1 auto;
+    min-width:0;
+    display:grid;
+    grid-template-columns:minmax(86px,1fr) 40px 40px 40px;
+    grid-template-rows:var(--control-height) var(--control-height);
+    gap:6px;
+    align-items:center;
+    justify-content:stretch;
+  }
+  .search-wrap {
+    grid-column:1 / 4;
+    grid-row:1;
+    width:auto;
+    min-width:0;
+  }
+  .toolbar-settings { grid-column:4; grid-row:1; }
+  .toolbar-sort {
+    grid-column:1;
+    grid-row:2;
+    width:100%;
+    min-width:0;
+    padding-left:8px;
+    padding-right:22px;
+  }
+  .toolbar-direction { grid-column:2; grid-row:2; }
+  .toolbar-filter { grid-column:3; grid-row:2; }
+  .toolbar-edit { grid-column:4; grid-row:2; }
+  .toolbar .icon-control,
+  .toolbar .edit-button { width:40px; min-width:40px; }
+
   .library-shell { padding:14px 14px 92px; }
   .settings-grid { grid-template-columns:1fr; }
   .password-row { flex-direction:column; }

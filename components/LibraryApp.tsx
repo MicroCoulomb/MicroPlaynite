@@ -226,7 +226,7 @@ export function LibraryApp() {
             title={editUnlocked ? "Toggle Edit Mode" : "Unlock Edit Access in Settings first"}
             onClick={() => setEditMode((v) => !v)}
           >
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><Pencil size={15} /> Edit</span>
+            <Pencil size={15} />
           </button>
 
           <button className="icon-control toolbar-settings" onClick={() => setSettingsOpen(true)} title="Settings"><Settings size={18} /></button>
