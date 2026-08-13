@@ -40,8 +40,6 @@ EDIT_SESSION_SECRET=your_random_secret
 
 7. Deploy the project and open your Vercel URL.
 
-Once everything is connected, Playnite, Neon, R2, and the web app will work together automatically.
-
 ## Sync
 
 The basic flow is:
@@ -62,6 +60,4 @@ New games added in Playnite are pushed to the cloud, while rating changes made t
 
 ## Personal Project
 
-Micro Playnite is mainly built as a personal game library viewer rather than a full Playnite replacement.
-
-It keeps things simple: browse the collection, find a game, check your ratings, and make quick updates from anywhere.
+I built Micro Playnite mainly as a personal game library viewer meant to be used alongside Playnite, not as a replacement.
