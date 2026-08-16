@@ -20,6 +20,15 @@ import type { GameRecord, GamesResponse, SortDirection, SortField, StatsResponse
 const STANDARD_STATUSES = ["Abandoned", "Backlog", "Completed", "Not Played", "Played", "Playing"];
 const GRID_OPTIONS = [6, 8, 10, 12];
 
+const STATUS_ICON_MAP: Record<string, string> = {
+  abandoned: "/Abandoned.png",
+  backlog: "/Backlog.png",
+  completed: "/Completed.png",
+  "not played": "/Not Played.png",
+  played: "/Played.png",
+  playing: "/Playing.png",
+};
+
 type Preferences = {
   columns: number;
   defaultSort: SortField;
@@ -290,6 +299,7 @@ export function LibraryApp() {
 function GameCard({ game, editable, onEdit }: { game: GameRecord; editable: boolean; onEdit: () => void }) {
   const [imageBroken, setImageBroken] = useState(false);
   const fill = Math.max(0, Math.min(100, game.user_score));
+  const statusIcon = STATUS_ICON_MAP[game.completion_status.trim().toLowerCase()];
   return (
     <article className={`game-card ${editable ? "editable" : ""}`} onClick={onEdit} title={editable ? "Edit rating" : game.game_title}>
       <div className="cover-frame">
@@ -302,6 +312,12 @@ function GameCard({ game, editable, onEdit }: { game: GameRecord; editable: bool
             <img src="/applogo.png" alt="" />
             <span>NO COVER</span>
           </div>
+        )}
+        {statusIcon && (
+          <span className="completion-status-badge" title={game.completion_status} aria-label={`Completion status: ${game.completion_status}`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={statusIcon} alt="" aria-hidden="true" />
+          </span>
         )}
       </div>
       <div className="game-title">{game.game_title}</div>
